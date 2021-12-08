@@ -8,6 +8,6 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface LoginApi {
-    @GET("login")
+    @POST("login")
     suspend fun login(@Body loginRequest: AuthRequest) : Response<String>
 }
