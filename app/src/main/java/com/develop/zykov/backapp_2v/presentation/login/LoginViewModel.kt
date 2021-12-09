@@ -5,19 +5,44 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.develop.zykov.backapp_2v.data.login.dto.AuthRequest
 import com.develop.zykov.backapp_2v.domain.login.usecase.LoginUseCase
+import com.develop.zykov.backapp_2v.utils.SharedPrefs
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import okio.utf8Size
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase): ViewModel() {
+class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase) : ViewModel() {
 
+    @Inject
+    lateinit var sharedPrefs: SharedPrefs
 
-    fun login() {
+    fun login(loginRequest: AuthRequest) {
+
+        sharedPrefs.clear()
+
         viewModelScope.launch {
-            val res = loginUseCase.execute(AuthRequest(name = "123", password = "123"))
-            Log.d("LogRes", res.body().toString())
+            loginUseCase.execute(loginRequest)
+                .onStart {
+                    // setLoading()
+                }
+                .catch { exception ->
+                    // hideLoading()
+                    Log.d("Login", "Catch " + exception.message.toString())
+                }
+                .collect { baseResult ->
+                    //hideLoading()
+                    when (baseResult.data) {
+                        null -> Log.d(
+                            "Login",
+                            "Error " + baseResult.code.toString()
+                        )
+                        else ->  {
+                            Log.d("Login", "Success " + baseResult.code + "\n" + baseResult.data)
+                            sharedPrefs.saveToken(baseResult.data.toString())
+                        }
+                    }
+                }
         }
     }
 

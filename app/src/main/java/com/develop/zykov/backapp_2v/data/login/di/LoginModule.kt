@@ -1,6 +1,6 @@
 package com.develop.zykov.backapp_2v.data.login.di
 
-import com.develop.zykov.backapp_2v.data.common.NetworkModule
+import com.develop.zykov.backapp_2v.data.common.module.NetworkModule
 import com.develop.zykov.backapp_2v.data.login.LoginRepositoryImpl
 import com.develop.zykov.backapp_2v.data.login.api.LoginApi
 import com.develop.zykov.backapp_2v.domain.login.LoginRepository

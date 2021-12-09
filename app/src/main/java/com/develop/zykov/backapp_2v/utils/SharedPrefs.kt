@@ -1,14 +1,13 @@
-package com.develop.zykov.backapp_2v.data.common
+package com.develop.zykov.backapp_2v.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import javax.inject.Inject
 
 @Suppress("UNCHECKED_CAST")
 class SharedPrefs constructor(private val context: Context) {
 
     companion object {
-        private const val PREF = "MyAppPrefName"
+        private const val PREF = "BankApp_2v"
         private const val PREF_TOKEN = "user_token"
     }
 
