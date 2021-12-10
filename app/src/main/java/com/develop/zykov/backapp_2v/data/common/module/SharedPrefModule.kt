@@ -16,4 +16,5 @@ object SharedPrefModule {
     fun provideSharedPref(@ApplicationContext context: Context) : SharedPrefs {
         return SharedPrefs(context)
     }
+
 }

@@ -22,7 +22,6 @@ import com.google.gson.Gson
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-
     @Singleton
     @Provides
     fun provideRetrofit(okHttp: OkHttpClient): Retrofit {

@@ -7,7 +7,6 @@ data class WrappedListResponse<T> (
     @SerializedName("data") var data : List<T>? = null
 )
 
-
 data class WrappedResponse<T> (
     var code: Int,
     var data : T? = null

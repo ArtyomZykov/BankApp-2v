@@ -1,8 +1,8 @@
 package com.develop.zykov.backapp_2v.data.login.di
 
 import com.develop.zykov.backapp_2v.data.common.module.NetworkModule
-import com.develop.zykov.backapp_2v.data.login.LoginRepositoryImpl
-import com.develop.zykov.backapp_2v.data.login.api.LoginApi
+import com.develop.zykov.backapp_2v.data.login.repository.LoginRepositoryImpl
+import com.develop.zykov.backapp_2v.data.login.remote.api.LoginApi
 import com.develop.zykov.backapp_2v.domain.login.LoginRepository
 import dagger.Module
 import dagger.Provides
@@ -26,6 +26,5 @@ class LoginModule {
     fun provideLoginRepository(loginApi: LoginApi) : LoginRepository {
         return LoginRepositoryImpl(loginApi)
     }
-
 
 }
