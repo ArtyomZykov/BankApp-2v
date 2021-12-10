@@ -1,6 +1,6 @@
 package com.develop.zykov.backapp_2v.data.registration.di
 
-import com.develop.zykov.backapp_2v.data.common.module.NetworkModule
+import com.develop.zykov.backapp_2v.di.NetworkModule
 import com.develop.zykov.backapp_2v.data.registration.remote.api.RegistrationApi
 import com.develop.zykov.backapp_2v.data.registration.repository.RegistrationRepositoryImpl
 import com.develop.zykov.backapp_2v.domain.registration.RegistrationRepository

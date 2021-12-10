@@ -1,6 +1,6 @@
 package com.develop.zykov.backapp_2v.data.registration.repository
 
-import com.develop.zykov.backapp_2v.data.common.utils.WrappedResponse
+import com.develop.zykov.backapp_2v.data.utils.WrappedResponse
 import com.develop.zykov.backapp_2v.data.registration.remote.api.RegistrationApi
 import com.develop.zykov.backapp_2v.data.registration.remote.dto.RegistrationRequest
 import com.develop.zykov.backapp_2v.data.registration.remote.dto.RegistrationResponse
@@ -16,9 +16,9 @@ class RegistrationRepositoryImpl @Inject constructor(private val registrationApi
         flow {
             val response = registrationApi.registration(registerRequest)
             if (response.isSuccessful) {
-                emit(WrappedResponse(code = response.code(), data = response.body()))
+                emit(WrappedResponse(code = response.code(), data = response.body(), successful = true))
             } else {
-                emit(WrappedResponse(code = response.code(), data = response.body()))
+                emit(WrappedResponse(code = response.code(), data = response.body(), successful = false))
             }
         }
 

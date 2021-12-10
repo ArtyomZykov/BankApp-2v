@@ -1,4 +1,4 @@
-package com.develop.zykov.backapp_2v.data.common.utils
+package com.develop.zykov.backapp_2v.data.utils
 
 import com.develop.zykov.backapp_2v.utils.SharedPrefs
 import okhttp3.Interceptor

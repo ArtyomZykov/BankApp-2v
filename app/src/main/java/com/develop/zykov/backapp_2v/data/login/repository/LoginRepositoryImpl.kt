@@ -1,6 +1,6 @@
 package com.develop.zykov.backapp_2v.data.login.repository
 
-import com.develop.zykov.backapp_2v.data.common.utils.WrappedResponse
+import com.develop.zykov.backapp_2v.data.utils.WrappedResponse
 import com.develop.zykov.backapp_2v.data.login.remote.api.LoginApi
 import com.develop.zykov.backapp_2v.data.login.remote.dto.LoginRequest
 import com.develop.zykov.backapp_2v.domain.login.LoginRepository
@@ -15,9 +15,9 @@ class LoginRepositoryImpl @Inject constructor(private val loginApi: LoginApi) : 
         flow {
             val response = loginApi.login(loginRequest)
             if (response.isSuccessful) {
-                emit(WrappedResponse(code = response.code(), data = response.body()))
+                emit(WrappedResponse(code = response.code(), data = response.body(), successful = true))
             } else {
-                emit(WrappedResponse(code = response.code(), data = response.body()))
+                emit(WrappedResponse(code = response.code(), data = response.body(), successful = false))
             }
         }
 

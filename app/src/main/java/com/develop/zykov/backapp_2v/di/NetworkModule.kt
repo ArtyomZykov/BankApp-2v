@@ -1,8 +1,7 @@
-package com.develop.zykov.backapp_2v.data.common.module
+package com.develop.zykov.backapp_2v.di
 
 import com.develop.zykov.backapp_2v.utils.SharedPrefs
-import com.develop.zykov.backapp_2v.data.common.utils.RequestInterceptor
-import com.google.gson.stream.JsonReader
+import com.develop.zykov.backapp_2v.data.utils.RequestInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,9 +12,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 import retrofit2.converter.scalars.ScalarsConverterFactory
-import com.google.gson.GsonBuilder
-
-import com.google.gson.Gson
 
 
 @Module

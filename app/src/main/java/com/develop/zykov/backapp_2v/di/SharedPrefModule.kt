@@ -1,4 +1,4 @@
-package com.develop.zykov.backapp_2v.data.common.module
+package com.develop.zykov.backapp_2v.di
 
 import android.content.Context
 import com.develop.zykov.backapp_2v.utils.SharedPrefs
