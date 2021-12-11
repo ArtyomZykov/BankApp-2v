@@ -11,14 +11,15 @@ class SharedPrefs constructor(private val context: Context) {
         private const val PREF_TOKEN = "user_token"
     }
 
-    private val sharedPref: SharedPreferences = context.getSharedPreferences(PREF, Context.MODE_PRIVATE)
+    private val sharedPref: SharedPreferences =
+        context.getSharedPreferences(PREF, Context.MODE_PRIVATE)
 
 
-    fun saveToken(token: String){
+    fun saveToken(token: String) {
         put(PREF_TOKEN, token)
     }
 
-    fun getToken() : String {
+    fun getToken(): String {
         return get(PREF_TOKEN, String::class.java)
     }
 

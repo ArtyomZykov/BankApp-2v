@@ -3,55 +3,71 @@ package com.develop.zykov.backapp_2v.presentation.login
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.develop.zykov.backapp_2v.data.loan.remote.dto.LoanRequest
 import com.develop.zykov.backapp_2v.data.login.remote.dto.LoginRequest
-import com.develop.zykov.backapp_2v.data.registration.remote.dto.RegistrationRequest
-import com.develop.zykov.backapp_2v.domain.loan.usecase.CreateLoanUseCase
-import com.develop.zykov.backapp_2v.domain.loan.usecase.GetLoanConditionsUseCase
-import com.develop.zykov.backapp_2v.domain.loan.usecase.GetLoanDataUseCase
-import com.develop.zykov.backapp_2v.domain.loan.usecase.GetLoansDataUseCase
+import com.develop.zykov.backapp_2v.domain.login.entity.AuthEntity
 import com.develop.zykov.backapp_2v.domain.login.usecase.LoginUseCase
-import com.develop.zykov.backapp_2v.domain.registration.usecase.RegistrationUseCase
 import com.develop.zykov.backapp_2v.utils.SharedPrefs
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val getLoanConditionsUseCase: GetLoanConditionsUseCase) :
+class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase) :
     ViewModel() {
 
     @Inject
     lateinit var sharedPrefs: SharedPrefs
+    private val state = MutableStateFlow<LoginFragmentState>(LoginFragmentState.Init)
+    val nState: StateFlow<LoginFragmentState> get() = state
 
-    fun login(loginRequest: LoginRequest) {
-        sharedPrefs.clear()
-        sharedPrefs.saveToken("Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJaeWtvdjIiLCJleHAiOjE2NDE3MzkyNTV9.WhmJvM7PjHc1o0VH9w-G-ejCn5CTi-N297lUvIe2rcBNJlCmCKQSBgkZBNHpVPNH9w-S4T1RbBuOheorPxY1Cw")
+    private fun setLoading() {
+        state.value = LoginFragmentState.IsLoading(true)
+    }
 
+    private fun hideLoading() {
+        state.value = LoginFragmentState.IsLoading(false)
+    }
+
+    fun login(loginRequest: AuthEntity) {
         viewModelScope.launch {
-            getLoanConditionsUseCase.invoke()
+            loginUseCase.invoke(
+                LoginRequest(
+                    name = loginRequest.login,
+                    password = loginRequest.password
+                )
+            )
                 .onStart {
-                    // setLoading()
+                    setLoading()
                 }
-                .catch { exception ->
-                    // hideLoading()
-                    Log.d("Login", "Catch " + exception.message.toString())
+                .catch {
+                    hideLoading()
                 }
                 .collect { baseResult ->
-                    //hideLoading()
-                    when (baseResult.data) {
-                        null -> Log.d(
+                    hideLoading()
+
+                    when (baseResult.successful) {
+                        false -> Log.d(
                             "Login",
                             "Error \t${baseResult.code}\t${baseResult.data}"
                         )
-                        else -> {
-                            Log.d("Login", "Success \t${baseResult.code}\t${baseResult.data}")
+                        true -> {
+                            Log.d(
+                                "Login",
+                                "OK \t${baseResult.code}\t${baseResult.data}"
+                            )
+
                             sharedPrefs.saveToken(baseResult.data.toString())
                         }
                     }
+
                 }
         }
     }
 
+}
+
+sealed class LoginFragmentState {
+    object Init : LoginFragmentState()
+    data class IsLoading(val isLoading: Boolean) : LoginFragmentState()
 }

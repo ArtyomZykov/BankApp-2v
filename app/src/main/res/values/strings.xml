@@ -2,4 +2,12 @@
     <string name="app_name">BankApp-2v</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="header_login">Sign in</string>
+    <string name="header_desc_login">Login to your account to access all the feature.</string>
+    <string name="hint_login_login_edit_text">Enter your login</string>
+    <string name="hint_login_password_edit_text">Password</string>
+    <string name="button_text_login">Sign in</string>
+    <string name="button_text_dont_have_account">I don\'t have an account</string>
+    <string name="error_login_not_valid">Login is not valid</string>
+    <string name="error_password_not_valid">Password is not valid</string>
 </resources>
