@@ -10,4 +10,11 @@
     <string name="button_text_dont_have_account">I don\'t have an account</string>
     <string name="error_login_not_valid">Login is not valid</string>
     <string name="error_password_not_valid">Password is not valid</string>
+    <string name="incorrect_login_password">Login or password is incorrect</string>
+    <string name="incorrect_registration">Login or password is incorrect</string>
+    <string name="error">Error</string>
+    <string name="button_text_back">Back</string>
+    <string name="header_register">Sign up</string>
+    <string name="header_desc_register">Create an account to get access to all the feature</string>
+    <string name="button_text_register">Create account</string>
 </resources>

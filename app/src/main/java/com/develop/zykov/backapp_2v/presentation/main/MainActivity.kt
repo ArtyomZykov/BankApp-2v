@@ -32,11 +32,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 addToBackStack("LoginFragment")
             }
         } else {
-            supportFragmentManager.commit {
-                replace<LoginFragment>(R.id.container)
-                setReorderingAllowed(true)
-                addToBackStack("LoginFragment")
-            }
+
         }
 
     }

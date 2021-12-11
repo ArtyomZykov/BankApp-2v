@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.develop.zykov.backapp_2v.data.login.remote.dto.LoginRequest
 import com.develop.zykov.backapp_2v.domain.login.entity.AuthEntity
 import com.develop.zykov.backapp_2v.domain.login.usecase.LoginUseCase
-import com.develop.zykov.backapp_2v.utils.SharedPrefs
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -16,10 +15,8 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase) :
     ViewModel() {
 
-    @Inject
-    lateinit var sharedPrefs: SharedPrefs
     private val state = MutableStateFlow<LoginFragmentState>(LoginFragmentState.Init)
-    val nState: StateFlow<LoginFragmentState> get() = state
+    val fragmentState: StateFlow<LoginFragmentState> get() = state
 
     private fun setLoading() {
         state.value = LoginFragmentState.IsLoading(true)
@@ -45,21 +42,14 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
                 }
                 .collect { baseResult ->
                     hideLoading()
-
-                    when (baseResult.successful) {
-                        false -> Log.d(
-                            "Login",
-                            "Error \t${baseResult.code}\t${baseResult.data}"
-                        )
-                        true -> {
-                            Log.d(
-                                "Login",
-                                "OK \t${baseResult.code}\t${baseResult.data}"
-                            )
-
-                            sharedPrefs.saveToken(baseResult.data.toString())
-                        }
+                    if (baseResult.successful) {
+                        Log.d("Login", "OK \t${baseResult.code}\t${baseResult.data}")
+                        state.value = LoginFragmentState.SuccessLogin(baseResult.data.toString())
+                    } else {
+                        Log.d("Login", "Error \t${baseResult.code}\t${baseResult.data}")
+                        state.value = LoginFragmentState.ErrorLogin(baseResult.code)
                     }
+
 
                 }
         }
@@ -70,4 +60,6 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
 sealed class LoginFragmentState {
     object Init : LoginFragmentState()
     data class IsLoading(val isLoading: Boolean) : LoginFragmentState()
+    data class SuccessLogin(val token: String) : LoginFragmentState()
+    data class ErrorLogin(val code: Int) : LoginFragmentState()
 }
