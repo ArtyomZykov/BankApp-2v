@@ -1,6 +1,5 @@
 package com.develop.zykov.backapp_2v.presentation.start
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.develop.zykov.backapp_2v.data.loan.remote.dto.LoanResponse

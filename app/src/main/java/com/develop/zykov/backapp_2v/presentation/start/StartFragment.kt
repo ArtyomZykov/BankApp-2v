@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.core.os.persistableBundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
@@ -15,6 +17,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.develop.zykov.backapp_2v.R
 import com.develop.zykov.backapp_2v.data.loan.remote.dto.LoanResponse
+import com.develop.zykov.backapp_2v.presentation.info.InfoFragment
 import com.develop.zykov.backapp_2v.presentation.login.LoginFragment
 import com.develop.zykov.backapp_2v.utils.SharedPrefs
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,6 +25,12 @@ import kotlinx.android.synthetic.main.fragment_start.*
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
+
+import android.content.Intent
+
+
+
 
 @AndroidEntryPoint
 class StartFragment : Fragment() {
@@ -41,10 +50,15 @@ class StartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        init()
         observe()
         viewModel.getUserLoans()
         toolbarListener()
 
+    }
+
+    private fun init() {
+        empty_list_text.visibility = View.GONE
     }
 
     private fun observe() {
@@ -60,7 +74,13 @@ class StartFragment : Fragment() {
             is StartFragmentState.IsLoading -> handleLoading(state.isLoading)
             is StartFragmentState.ErrorLogin -> handleErrorLogin(state.code)
             is StartFragmentState.SuccessResponse -> {
-                buildRecycler(state.response)
+                if (state.response.isEmpty()) {
+                    empty_list_text.visibility = View.VISIBLE
+                } else {
+                    empty_list_text.visibility = View.GONE
+                    buildRecycler(state.response)
+                }
+
             }
         }
     }
@@ -87,7 +107,18 @@ class StartFragment : Fragment() {
 
         loan_recycler_view?.apply {
             val loanAdapter = LoanAdapter(onClick = {
-                Toast.makeText(context, "clicked on $it", Toast.LENGTH_SHORT).show()
+
+                val bundle = Bundle()
+                val nextFragment = InfoFragment()
+                bundle.putInt("id", it.id)
+                nextFragment.arguments = bundle
+
+                parentFragmentManager.commit {
+                    replace(R.id.container,  nextFragment)
+                    setReorderingAllowed(true)
+                    addToBackStack("InfoFragment")
+                }
+
             })
             loanAdapter.dataList = dataList
             adapter = loanAdapter
@@ -96,7 +127,6 @@ class StartFragment : Fragment() {
     }
 
     private fun toolbarListener() {
-
         top_bar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.action_sign_out -> {
@@ -108,7 +138,6 @@ class StartFragment : Fragment() {
                 }
             }
         }
-
     }
 
     private fun signOut() {

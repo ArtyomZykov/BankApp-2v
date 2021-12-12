@@ -64,3 +64,4 @@ sealed class LoginFragmentState {
     data class SuccessLogin(val token: String) : LoginFragmentState()
     data class ErrorLogin(val code: Int) : LoginFragmentState()
 }
+
