@@ -38,27 +38,38 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/loan_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/item_start" />
 
+    <ProgressBar
+        android:id="@+id/loading_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/create_fab"
-        android:contentDescription="@string/content_desc_create_new_loan"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:theme="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
+        android:backgroundTint="@color/white_60"
+        android:contentDescription="@string/content_desc_create_new_loan"
+        android:src="@drawable/ic_baseline_add_24"
+        android:theme="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
         app:borderWidth="0dp"
         app:elevation="1dp"
-        android:backgroundTint="@color/white_60"
-        android:src="@drawable/ic_baseline_add_24"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

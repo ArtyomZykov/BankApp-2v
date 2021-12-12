@@ -27,6 +27,7 @@ class LoginViewModel @Inject constructor(private val loginUseCase: LoginUseCase)
     }
 
     fun login(loginRequest: AuthEntity) {
+
         viewModelScope.launch {
             loginUseCase.invoke(
                 LoginRequest(
