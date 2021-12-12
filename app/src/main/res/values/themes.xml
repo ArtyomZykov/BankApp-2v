@@ -19,4 +19,8 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="Theme.CleanArchitectureExercise.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.CleanArchitectureExercise.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

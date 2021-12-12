@@ -13,20 +13,13 @@ import com.develop.zykov.backapp_2v.R
 import com.develop.zykov.backapp_2v.domain.registration.entity.RegistrationEntity
 import com.develop.zykov.backapp_2v.utils.SharedPrefs
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_registration.*
-import kotlinx.android.synthetic.main.fragment_registration.loading_progress_bar
-import kotlinx.android.synthetic.main.fragment_registration.login_edit_text
-import kotlinx.android.synthetic.main.fragment_registration.password_edit_text
-import kotlinx.android.synthetic.main.fragment_registration.registration_button
-import kotlinx.android.synthetic.main.fragment_registration.response_text_view
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class RegistrationFragment : Fragment() {
-
 
     private val viewModel: RegistrationViewModel by viewModels()
     @Inject

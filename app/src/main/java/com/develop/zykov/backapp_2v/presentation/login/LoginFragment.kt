@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import com.develop.zykov.backapp_2v.R
 import com.develop.zykov.backapp_2v.domain.login.entity.AuthEntity
 import com.develop.zykov.backapp_2v.presentation.registration.RegistrationFragment
+import com.develop.zykov.backapp_2v.presentation.start.StartFragment
 import com.develop.zykov.backapp_2v.utils.SharedPrefs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -32,14 +33,23 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        sharedPrefs.clear()
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         observe()
         login_button.setOnClickListener { login() }
-        registration_button.setOnClickListener { goToRegistrationFragment() }
+        registration_button.setOnClickListener {
+
+
+            viewModel.login(AuthEntity(login = "Zykov2", password = "1231"))
+
+
+            // goToRegistrationFragment()
+        }
     }
 
     private fun observe() {
@@ -63,7 +73,12 @@ class LoginFragment : Fragment() {
     }
 
     private fun goToLoanFragment() {
-        //TODO("Not yet implemented")
+        parentFragmentManager.popBackStack()
+        parentFragmentManager.commit {
+            replace<StartFragment>(R.id.container)
+            setReorderingAllowed(true)
+            addToBackStack("StartFragment")
+        }
     }
 
     private fun goToRegistrationFragment() {

@@ -17,4 +17,6 @@
     <string name="header_register">Sign up</string>
     <string name="header_desc_register">Create an account to get access to all the feature</string>
     <string name="button_text_register">Create account</string>
+    <string name="content_desc_create_new_loan">Submit a new application</string>
+    <string name="action_sign_out">Sign out</string>
 </resources>
