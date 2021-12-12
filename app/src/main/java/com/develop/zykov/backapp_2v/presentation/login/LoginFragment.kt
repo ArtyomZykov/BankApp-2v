@@ -43,11 +43,6 @@ class LoginFragment : Fragment() {
         observe()
         login_button.setOnClickListener { login() }
         registration_button.setOnClickListener {
-
-
-            //viewModel.login(AuthEntity(login = "Zykov2", password = "1231"))
-
-
             goToRegistrationFragment()
         }
     }

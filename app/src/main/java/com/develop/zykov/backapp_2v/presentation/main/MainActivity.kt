@@ -8,6 +8,7 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.develop.zykov.backapp_2v.R
 import com.develop.zykov.backapp_2v.presentation.login.LoginFragment
+import com.develop.zykov.backapp_2v.presentation.start.StartFragment
 import com.develop.zykov.backapp_2v.utils.SharedPrefs
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -23,8 +24,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-        sharedPrefs.clear()
         if (sharedPrefs.getToken().isEmpty()) {
             supportFragmentManager.commit {
                 replace<LoginFragment>(R.id.container)
@@ -32,7 +31,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 addToBackStack("LoginFragment")
             }
         } else {
-
+            supportFragmentManager.commit {
+                replace<StartFragment>(R.id.container)
+                setReorderingAllowed(true)
+                addToBackStack("StartFragmentZ")
+            }
         }
 
     }
