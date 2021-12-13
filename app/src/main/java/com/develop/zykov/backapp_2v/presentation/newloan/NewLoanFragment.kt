@@ -72,6 +72,9 @@ class NewLoanFragment : Fragment() {
                     phoneNumber = phone
                 )
             )
+            sharedPrefs.saveName(firstName)
+            sharedPrefs.saveSurname(lastName)
+            sharedPrefs.savePhone(phone)
         }
     }
 
@@ -170,6 +173,11 @@ class NewLoanFragment : Fragment() {
     }
 
     private fun inflateTextViews(response: LoanConditionsResponse) {
+        if (sharedPrefs.getName().isNotEmpty()) {
+            firstname_edit_text.setText(sharedPrefs.getName())
+            lastname_edit_text.setText(sharedPrefs.getSurname())
+            phone_edit_text.setText(sharedPrefs.getPhone())
+        }
         max_amount_text_view.text = response.maxAmount.toString()
         percent_text_view.text = response.percent.toString()
         period_text_view.text = response.period.toString()
