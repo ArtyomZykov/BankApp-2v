@@ -179,9 +179,8 @@ class NewLoanFragment : Fragment() {
         if (isLoading) {
             loading_horizontal_progress_bar.isIndeterminate = true
             loading_bar.visibility = View.VISIBLE
-            loading_horizontal_progress_bar.progress = 0
         } else {
-            loading_horizontal_progress_bar.progress = 0
+            loading_horizontal_progress_bar.isIndeterminate = false
             loading_bar.visibility = View.GONE
         }
     }
