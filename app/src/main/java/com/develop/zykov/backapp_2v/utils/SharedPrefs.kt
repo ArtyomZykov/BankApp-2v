@@ -9,19 +9,46 @@ class SharedPrefs constructor(private val context: Context) {
     companion object {
         private const val PREF = "BankApp_2v"
         private const val PREF_TOKEN = "user_token"
+        private const val USER_NAME = "user_name"
+        private const val USER_SURNAME = "user_surname"
+        private const val USER_PHONE = "user_phone"
     }
 
     private val sharedPref: SharedPreferences =
         context.getSharedPreferences(PREF, Context.MODE_PRIVATE)
 
+    fun saveName(name: String) {
+        put(USER_NAME, name)
+    }
+
+    fun saveSurname(surname: String) {
+        put(USER_SURNAME, surname)
+    }
+
+    fun savePhone(phone: String) {
+        put(USER_PHONE, phone)
+    }
 
     fun saveToken(token: String) {
         put(PREF_TOKEN, token)
     }
 
+    fun getName(): String {
+        return get(USER_NAME, String::class.java)
+    }
+
+    fun getSurname(): String {
+        return get(USER_SURNAME, String::class.java)
+    }
+
+    fun getPhone(): String {
+        return get(USER_PHONE, String::class.java)
+    }
+
     fun getToken(): String {
         return get(PREF_TOKEN, String::class.java)
     }
+
 
     private fun <T> get(key: String, clazz: Class<T>): T =
         when (clazz) {
@@ -50,6 +77,9 @@ class SharedPrefs constructor(private val context: Context) {
     fun clear() {
         sharedPref.edit().run {
             remove(PREF_TOKEN)
+            remove(USER_NAME)
+            remove(USER_SURNAME)
+            remove(USER_PHONE)
         }.apply()
     }
 }

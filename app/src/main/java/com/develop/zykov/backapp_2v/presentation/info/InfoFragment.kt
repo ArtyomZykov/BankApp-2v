@@ -65,7 +65,7 @@ class InfoFragment : Fragment() {
 
 
     private fun inflateFragmentData(response: LoanResponse) {
-        name_text_view.text = response.firstName
+        max_amount_text_view.text = response.firstName
         surname_text_view.text = response.lastName
         number_text_view.text = response.phoneNumber
         val pattern = "MM.dd.yyyy HH:mm"
@@ -86,7 +86,7 @@ class InfoFragment : Fragment() {
     }
 
     private fun inflateFragmentView(response: LoanResponse) {
-        name_text_view.text = response.firstName
+        max_amount_text_view.text = response.firstName
         surname_text_view.text = response.lastName
         number_text_view.text = response.phoneNumber
         val pattern = "MM.dd.yyyy HH:mm"
@@ -100,7 +100,7 @@ class InfoFragment : Fragment() {
 
     private fun visibilityFragmentView() {
         const_name_text_view.visibility = View.VISIBLE
-        const_surname_text_view.visibility = View.VISIBLE
+        const_max_amount_text_view.visibility = View.VISIBLE
         const_number_text_view.visibility = View.VISIBLE
         const_date_text_view.visibility = View.VISIBLE
         const_status_text_view.visibility = View.VISIBLE

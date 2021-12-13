@@ -1,3 +1,4 @@
-<menu xmlns:tools="http://schemas.android.com/tools"
+<menu
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".presentation.main.MainActivity">
 </menu>

@@ -28,4 +28,16 @@
     <string name="info_amount_text">Amount</string>
     <string name="info_percent_text">Loan percentage</string>
     <string name="info_period_text">Period</string>
+    <string name="hint_firstname">First name</string>
+    <string name="hint_last_name">Last name</string>
+    <string name="hint_phone">Phone number</string>
+    <string name="loan_processing">Loan processing</string>
+    <string name="header_desc_loan">You are offered the conditions on which you can apply for a loan. Please fill in all fields</string>
+    <string name="hint_amount">Amount</string>
+    <string name="max_amount">Max amount</string>
+    <string name="percent">Percent</string>
+    <string name="sent_request">Send request</string>
+    <string name="period">Period</string>
+    <string name="error_empty_not_valid">This field must be filled</string>
+    <string name="error_amount_not_valid">The value in this field must not exceed the max amount</string>
 </resources>
