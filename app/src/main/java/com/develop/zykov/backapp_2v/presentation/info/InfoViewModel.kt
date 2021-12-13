@@ -24,7 +24,7 @@ class InfoViewModel @Inject constructor(private val getLoanDataUseCase: GetLoanD
         state.value = InfoFragmentState.IsLoading(false)
     }
 
-    fun login(id: Int) {
+    fun getData(id: Int) {
 
         viewModelScope.launch {
             getLoanDataUseCase.invoke(id)

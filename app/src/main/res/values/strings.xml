@@ -20,4 +20,12 @@
     <string name="content_desc_create_new_loan">Submit a new application</string>
     <string name="action_sign_out">Sign out</string>
     <string name="start_text_no_loan_application">You don\'t have loan applications</string>
+    <string name="info_name_text">Applicant\'s name</string>
+    <string name="info_surname_text">Applicant\'s surname</string>
+    <string name="info_number_text">Phone number</string>
+    <string name="info_date_text">Date of registration</string>
+    <string name="info_status_text">Application status</string>
+    <string name="info_amount_text">Amount</string>
+    <string name="info_percent_text">Loan percentage</string>
+    <string name="info_period_text">Period</string>
 </resources>
