@@ -19,7 +19,7 @@
             style="@style/Widget.MaterialComponents.Toolbar.Surface"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:menu="@menu/info_menu"
+            app:menu="@menu/empty_menu"
             app:title="@string/app_name" />
 
     </com.google.android.material.appbar.AppBarLayout>

@@ -39,9 +39,9 @@ class StartViewModel @Inject constructor(private val getLoansDataUseCase: GetLoa
                 .collect { baseResult ->
                     hideLoading()
                     if (baseResult.successful) {
-                        state.value = StartFragmentState.SuccessResponse(baseResult.data!!)
+                        state.value = StartFragmentState.SuccessGetUserLoans(baseResult.data!!)
                     } else {
-                        state.value = StartFragmentState.ErrorLogin(baseResult.code)
+                        state.value = StartFragmentState.ErrorGetUserLoans(baseResult.code)
                     }
                 }
         }
@@ -53,6 +53,6 @@ class StartViewModel @Inject constructor(private val getLoansDataUseCase: GetLoa
 sealed class StartFragmentState {
     object Init : StartFragmentState()
     data class IsLoading(val isLoading: Boolean) : StartFragmentState()
-    data class ErrorLogin(val code: Int) : StartFragmentState()
-    data class SuccessResponse(val response : List<LoanResponse>) : StartFragmentState()
+    data class ErrorGetUserLoans(val code: Int) : StartFragmentState()
+    data class SuccessGetUserLoans(val response : List<LoanResponse>) : StartFragmentState()
 }

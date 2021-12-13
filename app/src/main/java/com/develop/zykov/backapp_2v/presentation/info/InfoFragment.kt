@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -12,11 +11,8 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.develop.zykov.backapp_2v.R
 import com.develop.zykov.backapp_2v.data.loan.remote.dto.LoanResponse
-import com.develop.zykov.backapp_2v.presentation.login.LoginFragmentState
-import com.develop.zykov.backapp_2v.presentation.login.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_info.*
-import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import java.text.DateFormat
@@ -59,8 +55,8 @@ class InfoFragment : Fragment() {
         when (state) {
             is InfoFragmentState.Init -> Unit
             is InfoFragmentState.IsLoading -> handleLoading(state.isLoading)
-            is InfoFragmentState.ErrorLogin -> handleErrorGetData(state.code)
-            is InfoFragmentState.SuccessLogin -> {
+            is InfoFragmentState.ErrorGetData -> handleErrorGetData(state.code)
+            is InfoFragmentState.SuccessGetData -> {
                 inflateFragmentData(state.response)
                 visibilityFragmentView()
             }

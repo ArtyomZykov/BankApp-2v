@@ -37,9 +37,9 @@ class InfoViewModel @Inject constructor(private val getLoanDataUseCase: GetLoanD
                 .collect { baseResult ->
                     hideLoading()
                     if (baseResult.successful) {
-                        state.value = InfoFragmentState.SuccessLogin(baseResult.data!!)
+                        state.value = InfoFragmentState.SuccessGetData(baseResult.data!!)
                     } else {
-                        state.value = InfoFragmentState.ErrorLogin(baseResult.code)
+                        state.value = InfoFragmentState.ErrorGetData(baseResult.code)
                     }
                 }
         }
@@ -50,6 +50,6 @@ class InfoViewModel @Inject constructor(private val getLoanDataUseCase: GetLoanD
 sealed class InfoFragmentState {
     object Init : InfoFragmentState()
     data class IsLoading(val isLoading: Boolean) : InfoFragmentState()
-    data class SuccessLogin(val response: LoanResponse) : InfoFragmentState()
-    data class ErrorLogin(val code: Int) : InfoFragmentState()
+    data class SuccessGetData(val response: LoanResponse) : InfoFragmentState()
+    data class ErrorGetData(val code: Int) : InfoFragmentState()
 }

@@ -1,13 +1,9 @@
 package com.develop.zykov.backapp_2v.presentation.start
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.os.bundleOf
-import androidx.core.os.persistableBundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
@@ -19,17 +15,13 @@ import com.develop.zykov.backapp_2v.R
 import com.develop.zykov.backapp_2v.data.loan.remote.dto.LoanResponse
 import com.develop.zykov.backapp_2v.presentation.info.InfoFragment
 import com.develop.zykov.backapp_2v.presentation.login.LoginFragment
+import com.develop.zykov.backapp_2v.presentation.newloan.NewLoanFragment
 import com.develop.zykov.backapp_2v.utils.SharedPrefs
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_start.*
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
-
-import android.content.Intent
-
-
 
 
 @AndroidEntryPoint
@@ -59,6 +51,13 @@ class StartFragment : Fragment() {
 
     private fun init() {
         empty_list_text.visibility = View.GONE
+        create_fab.setOnClickListener {
+            parentFragmentManager.commit {
+                replace<NewLoanFragment>(R.id.container)
+                setReorderingAllowed(true)
+                addToBackStack("NewLoanFragment")
+            }
+        }
     }
 
     private fun observe() {
@@ -72,8 +71,8 @@ class StartFragment : Fragment() {
         when (state) {
             is StartFragmentState.Init -> Unit
             is StartFragmentState.IsLoading -> handleLoading(state.isLoading)
-            is StartFragmentState.ErrorLogin -> handleErrorLogin(state.code)
-            is StartFragmentState.SuccessResponse -> {
+            is StartFragmentState.ErrorGetUserLoans -> handleErrorLogin(state.code)
+            is StartFragmentState.SuccessGetUserLoans -> {
                 if (state.response.isEmpty()) {
                     empty_list_text.visibility = View.VISIBLE
                 } else {
