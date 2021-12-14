@@ -12,7 +12,7 @@
 
 ## **Стек технологий:**
 - Kotlin Coroutines
-- Flow
+- Kotlin’s Flow
 - Dagger + Hilt
 - OkHttp + Retrofit
 
