@@ -33,6 +33,7 @@ class InfoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         observe()
         getData()
 
@@ -63,13 +64,14 @@ class InfoFragment : Fragment() {
         }
     }
 
-
     private fun inflateFragmentData(response: LoanResponse) {
         max_amount_text_view.text = response.firstName
         surname_text_view.text = response.lastName
         number_text_view.text = response.phoneNumber
+
         val pattern = "MM.dd.yyyy HH:mm"
         val df: DateFormat = SimpleDateFormat(pattern)
+
         date_text_view.text = df.format(response.date)
         status_text_view.text = response.state
         amount_text_view.text = response.amount
@@ -83,19 +85,6 @@ class InfoFragment : Fragment() {
         } else {
             loading_bar.visibility = View.GONE
         }
-    }
-
-    private fun inflateFragmentView(response: LoanResponse) {
-        max_amount_text_view.text = response.firstName
-        surname_text_view.text = response.lastName
-        number_text_view.text = response.phoneNumber
-        val pattern = "MM.dd.yyyy HH:mm"
-        val df: DateFormat = SimpleDateFormat(pattern)
-        date_text_view.text = df.format(response.date)
-        status_text_view.text = response.state
-        amount_text_view.text = response.amount
-        percent_text_view.text = response.percent
-        period_text_view.text = response.period
     }
 
     private fun visibilityFragmentView() {
@@ -113,10 +102,10 @@ class InfoFragment : Fragment() {
 
         when (code) {
             400 -> {
-
+                TODO("Not realized")
             }
             else -> {
-
+                TODO("Not realized")
             }
         }
 

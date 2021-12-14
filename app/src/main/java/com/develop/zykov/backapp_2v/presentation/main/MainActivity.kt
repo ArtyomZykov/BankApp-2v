@@ -16,8 +16,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
-    private val viewModel: MainViewModel by viewModels()
-
     @Inject
     lateinit var sharedPrefs: SharedPrefs
 

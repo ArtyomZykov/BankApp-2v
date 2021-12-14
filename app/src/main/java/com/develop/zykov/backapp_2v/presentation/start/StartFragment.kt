@@ -94,10 +94,10 @@ class StartFragment : Fragment() {
     private fun handleErrorLogin(code: Int) {
         when (code) {
             400 -> {
-
+                TODO("Not realized")
             }
             else -> {
-
+                TODO("Not realized")
             }
         }
     }

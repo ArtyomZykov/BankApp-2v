@@ -149,14 +149,14 @@ class NewLoanFragment : Fragment() {
             is NewLoanFragmentState.Init -> Unit
             is NewLoanFragmentState.IsLoading -> handleLoading(state.isLoading)
 
-            is NewLoanFragmentState.ErrorGetLoanConditions -> TODO("Not yet implemented")
+            is NewLoanFragmentState.ErrorGetLoanConditions -> TODO("Not realized")
             is NewLoanFragmentState.SuccessGetLoanConditions -> {
                 loanTerms = state.response
                 inflateTextViews(state.response)
                 scroll_view.visibility = View.VISIBLE
             }
 
-            is NewLoanFragmentState.ErrorCreateLoan -> TODO("Not yet implemented")
+            is NewLoanFragmentState.ErrorCreateLoan -> TODO("Not realized")
             is NewLoanFragmentState.SuccessCreateLoan -> {
                 goToStartFragment()
             }

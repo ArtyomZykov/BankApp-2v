@@ -1,5 +1,6 @@
 package com.develop.zykov.backapp_2v.di
 
+import com.develop.zykov.backapp_2v.BuildConfig
 import com.develop.zykov.backapp_2v.utils.SharedPrefs
 import com.develop.zykov.backapp_2v.data.utils.RequestInterceptor
 import dagger.Module
@@ -22,13 +23,10 @@ object NetworkModule {
     @Provides
     fun provideRetrofit(okHttp: OkHttpClient): Retrofit {
         return Retrofit.Builder().apply {
-
             addConverterFactory(ScalarsConverterFactory.create())
-
             addConverterFactory(GsonConverterFactory.create())
-
             client(okHttp)
-            baseUrl("https://focusstart.appspot.com/")
+            baseUrl(BuildConfig.API_BASE_URL)
         }.build()
     }
 

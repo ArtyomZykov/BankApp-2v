@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="stand_margin">16dp</dimen>
+    <dimen name="stand_margin_medium">8dp</dimen>
+    <dimen name="stand_margin_large">24dp</dimen>
+    <dimen name="stand_margin_super_large">32dp</dimen>
+    <dimen name="stand_size">12sp</dimen>
+    <dimen name="stand_size_large">18sp</dimen>
+    <dimen name="stand_size_super_large">28sp</dimen>
+</resources>

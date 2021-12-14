@@ -38,7 +38,7 @@
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="gone"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,23 +69,23 @@
                 android:id="@+id/top_text_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/stand_margin"
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/loan_processing"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="28sp"
+                android:textSize="@dimen/stand_size_super_large"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline_left"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/comment_text_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="@dimen/stand_margin"
+                android:textSize="@dimen/stand_size"
                 android:lines="3"
                 android:text="@string/header_desc_loan"
                 app:layout_constraintEnd_toStartOf="@+id/guideline_right"
@@ -95,25 +95,24 @@
             <ProgressBar
                 android:id="@+id/loading_horizontal_progress_bar"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/stand_margin_medium"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline_left"
                 app:layout_constraintTop_toBottomOf="@+id/comment_text_view" />
 
             <TextView
                 android:id="@+id/const_max_amount_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/stand_margin_medium"
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/max_amount"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="18sp"
+                android:textSize="@dimen/stand_size_large"
                 android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="@+id/guideline_left"
                 app:layout_constraintTop_toBottomOf="@+id/loading_horizontal_progress_bar" />
@@ -125,23 +124,24 @@
                 android:layout_marginStart="16dp"
                 android:fontFamily="sans-serif-medium"
                 android:lines="1"
-                android:textSize="18sp"
+                android:textSize="@dimen/stand_size_large"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="@+id/const_max_amount_text_view"
                 app:layout_constraintEnd_toStartOf="@+id/guideline_right"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/const_max_amount_text_view"
-                app:layout_constraintTop_toTopOf="@+id/const_max_amount_text_view" />
+                app:layout_constraintTop_toTopOf="@+id/const_max_amount_text_view"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/const_percent_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/stand_margin_medium"
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/percent"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="18sp"
+                android:textSize="@dimen/stand_size_large"
                 android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="@+id/guideline_left"
                 app:layout_constraintTop_toBottomOf="@+id/const_max_amount_text_view" />
@@ -150,10 +150,10 @@
                 android:id="@+id/percent_text_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="@dimen/stand_margin"
                 android:fontFamily="sans-serif-medium"
                 android:lines="1"
-                android:textSize="18sp"
+                android:textSize="@dimen/stand_size_large"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="@+id/const_percent_text_view"
                 app:layout_constraintEnd_toStartOf="@+id/guideline_right"
@@ -162,28 +162,28 @@
                 app:layout_constraintTop_toBottomOf="@+id/const_max_amount_text_view"
                 app:layout_constraintVertical_bias="1.0" />
 
+
             <TextView
                 android:id="@+id/const_period_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/stand_margin_medium"
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/period"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="18sp"
+                android:textSize="@dimen/stand_size_large"
                 android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="@+id/guideline_left"
                 app:layout_constraintTop_toBottomOf="@+id/const_percent_text_view" />
-
 
             <TextView
                 android:id="@+id/period_text_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="@dimen/stand_margin"
                 android:fontFamily="sans-serif-medium"
                 android:lines="1"
-                android:textSize="18sp"
+                android:textSize="@dimen/stand_size_large"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="@+id/const_period_text_view"
                 app:layout_constraintEnd_toStartOf="@+id/guideline_right"
@@ -196,7 +196,7 @@
                 android:id="@+id/firstname_input_l"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/stand_margin_medium"
                 android:background="@color/white_40"
                 app:boxBackgroundColor="@android:color/transparent"
                 app:errorEnabled="true"
@@ -277,15 +277,13 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/upload_button"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="@dimen/stand_margin"
                 android:text="@string/sent_request"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_right"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline_left"
                 app:layout_constraintTop_toBottomOf="@+id/amount_input_l" />
 
 
