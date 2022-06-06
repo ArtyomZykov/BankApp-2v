@@ -17,24 +17,24 @@
 
 ## Пример работы приложения:
 ![](gif_for_readme.gif)
-##Test
-##Test
-##Test
-##Test
-##Test
-##Test
-##Test
-##Test
-##Test
-##Test
-##Test
-##Test
-##Test
-##Test
-##Test
-##Test
-##Test
-##Test
-##Test
-##Test
-##Test
+## Test
+## Test
+## Test
+## Test
+## Test
+## Test
+## Test
+## Test
+## Test
+## Test
+## Test
+## Test
+## Test
+## Test
+## Test
+## Test
+## Test
+## Test
+## Test
+## Test
+## Test
